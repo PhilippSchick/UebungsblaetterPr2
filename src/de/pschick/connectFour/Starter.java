@@ -9,13 +9,22 @@ package de.pschick.connectFour;
  *
  */
 public class Starter {
+	//The Index of the player Array
+	private int p;
+	
+	//The Players
+	private Player[] player = new Player[2];
+	
+	//The Field
+	private Field field = new Field();
 
 	/**
-	 * @param args
+	 * The first started Method
+	 * 
+	 * @param args The start parameter
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }
