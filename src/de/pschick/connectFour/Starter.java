@@ -9,14 +9,6 @@ package de.pschick.connectFour;
  *
  */
 public class Starter {
-	//The Index of the player Array
-	private int p;
-	
-	//The Players
-	private Player[] player = new Player[2];
-	
-	//The Field
-	private Field field = new Field();
 
 	/**
 	 * The first started Method
@@ -24,7 +16,15 @@ public class Starter {
 	 * @param args The start parameter
 	 */
 	public static void main(String[] args) {
-		
+		// The Index of the player Array
+		int p;
+
+		// The Players
+		Player[] player = new Player[2];
+
+		// The Field
+		Field field = new Field();
+
 	}
 
 }
