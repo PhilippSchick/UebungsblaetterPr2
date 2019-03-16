@@ -21,9 +21,10 @@ public class Field {
 	 * 
 	 * @param column The column in which the token should be dropped
 	 * @param player The Player which makes the move
+	 * @return true if the move was successful
 	 */
-	public void makeMove(int column, boolean player) {
-
+	public boolean makeMove(int column, boolean player) {
+		return false;
 	}
 
 	/**
@@ -35,6 +36,15 @@ public class Field {
 	public int checkWinner() {
 		// TODO Generate Method
 		return -1;
+	}
+
+	/**
+	 * Returns the number of columns of the field
+	 * 
+	 * @return
+	 */
+	public int getColumns() {
+		return this.field[0].length;
 	}
 
 	/**
