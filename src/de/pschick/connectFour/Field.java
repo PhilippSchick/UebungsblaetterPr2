@@ -7,14 +7,13 @@ package de.pschick.connectFour;
  * @author Philipp Schick
  * @version 1.00, 13.03.2019
  *
- *          The Field to play <code>false</code> represents player 0,
- *          <code>true</code> represents player 1
+ *          The Field to play, X represents player 0, O represents player 1
  */
 public class Field {
 	/*
 	 * The field
 	 */
-	private boolean[][] field = new boolean[7][6];
+	private String[][] field = new String[7][6];
 
 	/**
 	 * A Move which places a new token on the field. Before you do this, you should
@@ -30,20 +29,34 @@ public class Field {
 	/**
 	 * Checks if someone has won
 	 * 
-	 * @return 0 : Game continues, 1 : Player <code>false</code> wins, 2 : Player
-	 *         <code>true</code> wins, 3 : Nobody wins
+	 * @return 0 : Game continues, 1 : Player 0 wins, 2 : Player 1 wins, 3 : Nobody
+	 *         wins
 	 */
 	public int checkWinner() {
-		//TODO Generate Method
+		// TODO Generate Method
 		return -1;
 	}
-	
+
 	/**
 	 * Returns a String representation of the field
+	 * 
 	 * @return The field as a String
 	 */
 	public String toString() {
-		//TODO Write Method
-		return null;
+		// The return value
+		String ret = "";
+
+		for (int r = 0; r < field[0].length; r++) {
+			for (int c = 0; c < field.length; c++) {
+				if (field[c][r] == null) {
+					ret = ret + "[]";
+				} else {
+					ret = ret + "[" + field[c][r] + "]";
+				}
+			}
+			ret += "\n";
+		}
+
+		return ret;
 	}
 }
