@@ -23,7 +23,7 @@ public class Field {
 	 * @param player The Player which makes the move
 	 * @return true if the move was successful
 	 */
-	public boolean makeMove(int column, boolean player) {
+	public boolean makeMove(int column, int player) {
 		return false;
 	}
 
