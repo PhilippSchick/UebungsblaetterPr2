@@ -6,7 +6,9 @@ package de.pschick.connectFour;
 /**
  * @author Philipp Schick
  * @version 1.00, 13.03.2019
- *
+ * 
+ *          RandomPlayer is an AI which does moves based on pseudo random
+ *          numbers
  */
 public class RandomPlayer extends Player {
 
@@ -22,9 +24,13 @@ public class RandomPlayer extends Player {
 	}
 
 	@Override
-	public void makeMove() {
-		// TODO Auto-generated method stub
+	public void moveBehavior() {
 
+		// Random column
+		int ranColumn = (int) Math.random() * (field.getColumns() + 1);
+
+		//TODO absichern wenn move fehlschlägt
+		field.makeMove(ranColumn, playerNumber);
 	}
 
 }

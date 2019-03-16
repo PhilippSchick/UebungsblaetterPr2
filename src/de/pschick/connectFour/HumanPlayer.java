@@ -22,7 +22,7 @@ public class HumanPlayer extends Player {
 	}
 
 	@Override
-	public void makeMove() {
+	public void moveBehavior() {
 		// TODO Auto-generated method stub
 
 	}
