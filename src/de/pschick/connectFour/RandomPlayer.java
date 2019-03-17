@@ -25,12 +25,13 @@ public class RandomPlayer extends Player {
 
 	@Override
 	public void moveBehavior() {
-
 		// Random column
-		int ranColumn = (int) Math.random() * (field.getColumns() + 1);
+		int ranColumn;
 
-		//TODO absichern wenn move fehlschlägt
-		field.makeMove(ranColumn, playerNumber);
+		do {
+			// TODO Qualität des Zufalls fraglich
+			ranColumn = (int) Math.random() * (field.getColumns() + 1);
+		} while (!field.makeMove(ranColumn, playerNumber));
 	}
 
 }
