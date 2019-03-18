@@ -3,6 +3,9 @@
  */
 package de.pschick.connectFour;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * @author Philipp Schick
  * @version 1.00, 13.03.2019
@@ -23,8 +26,25 @@ public class HumanPlayer extends Player {
 
 	@Override
 	public void moveBehavior() {
-		// TODO Auto-generated method stub
-
+		Scanner scan = new Scanner(System.in);
+		int column = -1;
+		
+		do {
+			System.out.println("Please insert a column");
+			
+			try {
+				column = scan.nextInt();
+				
+				//throw Exception if input is out of bound
+				if (!(column >= 0 && column < field.getColumns())) {
+					throw new InputMismatchException();
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input!");
+				moveBehavior();
+			}
+			
+		} while (!field.makeMove(column, playerNumber));
 	}
 
 }
