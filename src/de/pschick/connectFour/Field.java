@@ -51,6 +51,32 @@ public class Field {
 	 */
 	public int checkWinner() {
 
+		// Check columns
+		for (int c = 0; c < field.length; c++) {
+			int colRet = checkColumn(c);
+			if (colRet == 1) {
+				return 1;
+			}
+			if (colRet == 2) {
+				return 2;
+			}
+		}
+
+		// Check rows
+		for (int r = 0; r < field[0].length; r++) {
+			int roRet = checkRow(r);
+			if (roRet == 1) {
+				return 1;
+			}
+			if (roRet == 2) {
+				return 2;
+			}
+		}
+
+		// TODO Diagonal
+		
+		
+
 		// Check if field is full
 		for (int r = 0; r < field[0].length; r++) {
 			for (int c = 0; c < field.length; c++) {
@@ -60,9 +86,8 @@ public class Field {
 				}
 			}
 		}
-
-		// TODO Generate Method
-		return -1;
+		// Game continues
+		return 0;
 	}
 
 	/**
@@ -135,6 +160,16 @@ public class Field {
 		}
 		// Nobody got four connected
 		return 0;
+	}
+	
+	/**
+	 * Checks if any tokens are connected diagonal
+	 * 
+	 * @return 0 : Game continues, 1 : Player 0 wins, 2 : Player 1 wins
+	 */
+	private int checkDiagonal() {
+		//TODO fill method
+		return -1;
 	}
 
 	/**
