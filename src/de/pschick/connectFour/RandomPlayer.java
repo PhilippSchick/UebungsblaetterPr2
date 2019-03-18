@@ -3,6 +3,8 @@
  */
 package de.pschick.connectFour;
 
+import java.util.Random;
+
 /**
  * @author Philipp Schick
  * @version 1.00, 13.03.2019
@@ -29,8 +31,7 @@ public class RandomPlayer extends Player {
 		int ranColumn;
 
 		do {
-			// TODO Qualität des Zufalls fraglich
-			ranColumn = (int) Math.random() * (field.getColumns() + 1);
+			ranColumn = new Random().nextInt(field.getColumns());
 		} while (!field.makeMove(ranColumn, playerNumber));
 	}
 
