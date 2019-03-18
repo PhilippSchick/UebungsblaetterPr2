@@ -50,8 +50,91 @@ public class Field {
 	 *         wins
 	 */
 	public int checkWinner() {
+
+		// Check if field is full
+		for (int r = 0; r < field[0].length; r++) {
+			for (int c = 0; c < field.length; c++) {
+				if (field[c][r] == null) {
+					// Nobody wins
+					return 3;
+				}
+			}
+		}
+
 		// TODO Generate Method
 		return -1;
+	}
+
+	/**
+	 * Checks if in the given column four tokens are connected
+	 * 
+	 * @return 0 : Game continues, 1 : Player 0 wins, 2 : Player 1 wins
+	 */
+	private int checkColumn(int column) {
+		// The connected tokens of a player
+		int player0 = 0;
+		int player1 = 0;
+
+		for (int i = 0; i < field[0].length; i++) {
+			if (field[column][i] != null) {
+				// if a field is set with a token
+				if (field[column][i].contentEquals(playerSymbol[0])) {
+					// if a token off player0 is found
+					player0++;
+					player1 = 0;
+				} else {
+					// if a token off player1 is found
+					player0 = 0;
+					player1++;
+				}
+
+				// check if a player already got four connected
+				if (player0 == 4) {
+					return 1;
+				}
+				if (player1 == 4) {
+					return 2;
+				}
+			}
+		}
+		// Nobody got four connected
+		return 0;
+	}
+
+	/**
+	 * Checks if in the given row four tokens are connected
+	 * 
+	 * @return 0 : Game continues, 1 : Player 0 wins, 2 : Player 1 wins
+	 */
+	private int checkRow(int row) {
+		// The connected tokens of a player
+		int player0 = 0;
+		int player1 = 0;
+
+		for (int i = 0; i < field.length; i++) {
+			if (field[i][row] != null) {
+				// if a field is set with a token
+				if (field[i][row].contentEquals(playerSymbol[0])) {
+					// if a token off player0 is found
+					player0++;
+					player1 = 0;
+				} else {
+					// if a token off player1 is found
+					player0 = 0;
+					player1++;
+				}
+
+				// check if a player already got four connected
+				if (player0 == 4) {
+					return 1;
+				}
+				if (player1 == 4) {
+					return 2;
+				}
+			}
+		}
+		// Nobody got four connected
+		return 0;
 	}
 
 	/**
