@@ -10,10 +10,16 @@ package de.pschick.connectFour;
  *          The Field to play, X represents player 0, O represents player 1
  */
 public class Field {
-	/*
+	/**
 	 * The field
 	 */
 	private String[][] field = new String[7][6];
+
+	/**
+	 * Keeps the symbol for player 0 at <code>playerSymbol[0]</code> and for player
+	 * 1 at <code>playerSymbol[0]</code>
+	 */
+	private String[] playerSymbol = { "X", "O" };
 
 	/**
 	 * A Move which places a new token on the field. Before you do this, you should
@@ -24,7 +30,17 @@ public class Field {
 	 * @return true if the move was successful
 	 */
 	public boolean makeMove(int column, int player) {
-		return false;
+		if (!field[column][0].equals(null)) {
+			return false;
+		}
+
+		int row = 0;
+		// go a row down if the lower row is empty
+		while (field[column][row + 1].equals(null) && (row + 1) < getColumns()) {
+			row++;
+		}
+		field[column][row] = playerSymbol[player];
+		return true;
 	}
 
 	/**
