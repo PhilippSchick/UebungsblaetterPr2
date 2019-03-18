@@ -30,13 +30,13 @@ public class Field {
 	 * @return true if the move was successful
 	 */
 	public boolean makeMove(int column, int player) {
-		if (!field[column][0].equals(null)) {
+		if (!(field[column][0] == null)) {
 			return false;
 		}
 
 		int row = 0;
 		// go a row down if the lower row is empty
-		while (field[column][row + 1].equals(null) && (row + 1) < getColumns()) {
+		while ((row + 1) < field[0].length && (field[column][row + 1] == null)) {
 			row++;
 		}
 		field[column][row] = playerSymbol[player];
@@ -60,7 +60,7 @@ public class Field {
 	 * @return
 	 */
 	public int getColumns() {
-		return this.field[0].length;
+		return this.field.length;
 	}
 
 	/**
