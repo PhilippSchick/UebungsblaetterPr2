@@ -73,9 +73,14 @@ public class Field {
 			}
 		}
 
-		// TODO Diagonal
-		
-		
+		// Check diagonal
+		int diaRet = checkDiagonal();
+		if (diaRet == 1) {
+			return 1;
+		}
+		if (diaRet == 2) {
+			return 2;
+		}
 
 		// Check if field is full
 		for (int r = 0; r < field[0].length; r++) {
@@ -161,15 +166,161 @@ public class Field {
 		// Nobody got four connected
 		return 0;
 	}
-	
+
 	/**
 	 * Checks if any tokens are connected diagonal
 	 * 
 	 * @return 0 : Game continues, 1 : Player 0 wins, 2 : Player 1 wins
 	 */
 	private int checkDiagonal() {
-		//TODO fill method
-		return -1;
+		// From top to bottom right
+		for (int i = 0; i < (field.length - 3); i++) {
+
+			// The connected tokens of a player
+			int player0 = 0;
+			int player1 = 0;
+
+			// The current column and row
+			int c = i;
+			int r = 0;
+
+			while (r < field[0].length && c < field.length) {
+				if (field[c][r] != null) {
+					// if a field is set with a token
+					if (field[c][r].contentEquals(playerSymbol[0])) {
+						// if a token off player0 is found
+						player0++;
+						player1 = 0;
+					} else {
+						// if a token off player1 is found
+						player0 = 0;
+						player1++;
+					}
+
+					// check if a player already got four connected
+					if (player0 == 4) {
+						return 1;
+					}
+					if (player1 == 4) {
+						return 2;
+					}
+				}
+				r++;
+				c++;
+			}
+		}
+
+		// From left to bottom
+		for (int i = 0; i < field[0].length - 3; i++) {
+			// The connected tokens of a player
+			int player0 = 0;
+			int player1 = 0;
+
+			// The current column and row
+			int c = 0;
+			int r = i;
+
+			while (r < field[0].length) {
+				if (field[c][r] != null) {
+					// if a field is set with a token
+					if (field[c][r].contentEquals(playerSymbol[0])) {
+						// if a token off player0 is found
+						player0++;
+						player1 = 0;
+					} else {
+						// if a token off player1 is found
+						player0 = 0;
+						player1++;
+					}
+
+					// check if a player already got four connected
+					if (player0 == 4) {
+						return 1;
+					}
+					if (player1 == 4) {
+						return 2;
+					}
+				}
+				r++;
+				c++;
+			}
+
+		}
+
+		// From top right to bottom left
+		for (int i = 2; i < field.length; i++) {
+			// The connected tokens of a player
+			int player0 = 0;
+			int player1 = 0;
+
+			// The current column and row
+			int c = i;
+			int r = 0;
+
+			while (r < field[0].length && c < field.length) {
+				if (field[c][r] != null) {
+					// if a field is set with a token
+					if (field[c][r].contentEquals(playerSymbol[0])) {
+						// if a token off player0 is found
+						player0++;
+						player1 = 0;
+					} else {
+						// if a token off player1 is found
+						player0 = 0;
+						player1++;
+					}
+
+					// check if a player already got four connected
+					if (player0 == 4) {
+						return 1;
+					}
+					if (player1 == 4) {
+						return 2;
+					}
+				}
+				r++;
+				c++;
+			}
+
+		}
+
+		// From right to top
+		for (int i = 3; i < field[0].length - 1; i++) {
+			// The connected tokens of a player
+			int player0 = 0;
+			int player1 = 0;
+
+			// The current column and row
+			int c = 0;
+			int r = i;
+
+			while (r >= 0 && c >= 0) {
+				if (field[c][r] != null) {
+					// if a field is set with a token
+					if (field[c][r].contentEquals(playerSymbol[0])) {
+						// if a token off player0 is found
+						player0++;
+						player1 = 0;
+					} else {
+						// if a token off player1 is found
+						player0 = 0;
+						player1++;
+					}
+
+					// check if a player already got four connected
+					if (player0 == 4) {
+						return 1;
+					}
+					if (player1 == 4) {
+						return 2;
+					}
+				}
+				r--;
+				c--;
+			}
+		}
+
+		return 0;
 	}
 
 	/**
@@ -193,7 +344,7 @@ public class Field {
 		for (int r = 0; r < field[0].length; r++) {
 			for (int c = 0; c < field.length; c++) {
 				if (field[c][r] == null) {
-					ret = ret + "[]";
+					ret = ret + "[ ]";
 				} else {
 					ret = ret + "[" + field[c][r] + "]";
 				}
