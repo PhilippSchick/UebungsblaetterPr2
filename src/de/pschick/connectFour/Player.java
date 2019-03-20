@@ -42,7 +42,7 @@ public abstract class Player {
 		if (playerNumber == null) {
 			throw new IllegalStateException("Player number isn't set yet!");
 		}
-		
+
 		moveBehavior();
 	}
 
@@ -68,6 +68,15 @@ public abstract class Player {
 		} else {
 			throw new IllegalStateException("Number already set!");
 		}
+	}
+
+	/**
+	 * Sets the Player name
+	 * 
+	 * @param playerName the Player name to set
+	 */
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 }
