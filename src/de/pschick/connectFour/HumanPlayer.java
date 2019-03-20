@@ -28,14 +28,13 @@ public class HumanPlayer extends Player {
 	public void moveBehavior() {
 		Scanner scan = new Scanner(System.in);
 		int column = -1;
-		
+
 		do {
 			System.out.println("Please insert a column");
-			
 			try {
 				column = scan.nextInt();
-				
-				//throw Exception if input is out of bound
+
+				// throw Exception if input is out of bound
 				if (!(column >= 0 && column < field.getColumns())) {
 					throw new InputMismatchException();
 				}
@@ -44,7 +43,7 @@ public class HumanPlayer extends Player {
 				moveBehavior();
 				return;
 			}
-			
+
 		} while (!field.makeMove(column, playerNumber));
 	}
 
