@@ -42,6 +42,7 @@ public class HumanPlayer extends Player {
 			} catch (InputMismatchException e) {
 				System.out.println("Invalid input!");
 				moveBehavior();
+				return;
 			}
 			
 		} while (!field.makeMove(column, playerNumber));
