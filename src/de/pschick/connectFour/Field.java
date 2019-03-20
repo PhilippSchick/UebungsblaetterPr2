@@ -211,7 +211,7 @@ public class Field {
 		}
 
 		// From left to bottom
-		for (int i = 0; i < field[0].length - 3; i++) {
+		for (int i = 1; i < field[0].length - 3; i++) {
 			// The connected tokens of a player
 			int player0 = 0;
 			int player1 = 0;
@@ -248,53 +248,16 @@ public class Field {
 		}
 
 		// From top right to bottom left
-		for (int i = 2; i < field.length; i++) {
+		for (int i = 0; i < field.length; i++) {
 			// The connected tokens of a player
 			int player0 = 0;
 			int player1 = 0;
 
 			// The current column and row
 			int c = i;
-			int r = 0;
+			int r = field[0].length - 1;
 
-			while (r < field[0].length && c < field.length) {
-				if (field[c][r] != null) {
-					// if a field is set with a token
-					if (field[c][r].contentEquals(playerSymbol[0])) {
-						// if a token off player0 is found
-						player0++;
-						player1 = 0;
-					} else {
-						// if a token off player1 is found
-						player0 = 0;
-						player1++;
-					}
-
-					// check if a player already got four connected
-					if (player0 == 4) {
-						return 1;
-					}
-					if (player1 == 4) {
-						return 2;
-					}
-				}
-				r++;
-				c++;
-			}
-
-		}
-
-		// From right to top
-		for (int i = 3; i < field[0].length - 1; i++) {
-			// The connected tokens of a player
-			int player0 = 0;
-			int player1 = 0;
-
-			// The current column and row
-			int c = 0;
-			int r = i;
-
-			while (r >= 0 && c >= 0) {
+			while (r >= 0 && c < field.length) {
 				if (field[c][r] != null) {
 					// if a field is set with a token
 					if (field[c][r].contentEquals(playerSymbol[0])) {
@@ -316,7 +279,44 @@ public class Field {
 					}
 				}
 				r--;
-				c--;
+				c++;
+			}
+
+		}
+
+		// From left to bottom
+		for (int i = 3; i < field[0].length - 2; i++) {
+			// The connected tokens of a player
+			int player0 = 0;
+			int player1 = 0;
+
+			// The current column and row
+			int c = 0;
+			int r = i;
+
+			while (r >= 0 && c < field.length) {
+				if (field[c][r] != null) {
+					// if a field is set with a token
+					if (field[c][r].contentEquals(playerSymbol[0])) {
+						// if a token off player0 is found
+						player0++;
+						player1 = 0;
+					} else {
+						// if a token off player1 is found
+						player0 = 0;
+						player1++;
+					}
+
+					// check if a player already got four connected
+					if (player0 == 4) {
+						return 1;
+					}
+					if (player1 == 4) {
+						return 2;
+					}
+				}
+				r--;
+				c++;
 			}
 		}
 
