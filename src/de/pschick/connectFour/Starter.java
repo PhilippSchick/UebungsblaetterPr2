@@ -32,7 +32,7 @@ public class Starter {
 		System.out.println("Choose Modus \n" + "1 - Human vs. AI\n" + "2 - Human vs. Human\n" + "3 - AI vs. AI");
 
 		// The input
-		int in = 0;
+		int modeIn = 0;
 		// loop variable
 		boolean loop = false;
 		// The scanner
@@ -40,10 +40,10 @@ public class Starter {
 
 		do {
 			try {
-				in = scan.nextInt();
+				modeIn = scan.nextInt();
 				loop = false;
 				// throw Exception if input is out of bound
-				if (!(in > 0 && in < 4)) {
+				if (!(modeIn > 0 && modeIn < 4)) {
 					throw new InputMismatchException();
 				}
 			} catch (InputMismatchException e) {
@@ -52,23 +52,37 @@ public class Starter {
 			}
 		} while (loop);
 
-		switch (in) {
+		switch (modeIn) {
 		case 1: // Human vs. AI
 			Player com = new RandomPlayer(field);
 			Player human = new HumanPlayer(field);
 
-			// Randomly assign player numbers
-			int ranNum = new Random().nextInt(2);
-			player[ranNum] = human;
-			human.setPlayerNumber(ranNum);
+			// Choose to begin
+			System.out.println("Type 'y' if you want to start");
 
-			if (ranNum == 0) {
+			String startIn = scan.next();
+
+			if (startIn.contentEquals("y") | startIn.contentEquals("Y")) {
+				player[0] = human;
+				player[0].setPlayerNumber(0);
 				player[1] = com;
-				com.setPlayerNumber(1);
+				player[1].setPlayerNumber(1);
 			} else {
 				player[0] = com;
-				com.setPlayerNumber(0);
+				player[0].setPlayerNumber(0);
+				player[1] = human;
+				player[1].setPlayerNumber(1);
 			}
+
+			/*
+			 * Didn't matched requirements
+			 * 
+			 * // Randomly assign player numbers int ranNum = new Random().nextInt(2);
+			 * player[ranNum] = human; human.setPlayerNumber(ranNum);
+			 * 
+			 * if (ranNum == 0) { player[1] = com; com.setPlayerNumber(1); } else {
+			 * player[0] = com; com.setPlayerNumber(0); }
+			 */
 			break;
 		case 2: // Human vs. Human
 			player[0] = new HumanPlayer(field);
